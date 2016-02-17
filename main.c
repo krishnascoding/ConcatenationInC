@@ -29,13 +29,27 @@ int stringLength (char *string)
 
 int main(int argc, const char * argv[]) {
 
-    char *myArray [] = {"string1", "word2"," ", "fourth", "cinco", "6"};
-    
+    char *myArray [] = {"One", "word2","three", "fourth", "cinco", "string6"};
     int arrayLen = sizeof(myArray)/sizeof(myArray[0]);
     int newStringLen = 0;
-    char *newString = malloc((sizeof(char)* newStringLen)+5);
     int k = 0;
+    char *newString;
    
+    // Get length of newString by adding length of each string in myArray
+    
+    for (int i = 0; i< arrayLen; i++) {
+        
+        for (int j = 0; j < stringLength(myArray[i]); j++) {
+            
+            newStringLen++;
+        }
+    }
+
+    // Allocate enough memory to hold newString using length of k (all characters in array of strings)
+    
+    newString = malloc(sizeof(char) * newStringLen);
+    
+    // Update newString with strings from Array
 
     for (int i = 0; i< arrayLen; i++) {
        
@@ -47,9 +61,9 @@ int main(int argc, const char * argv[]) {
         newString[k] = '\0';
     }
    
-
-    printf("%s\n", newString);
-    printf("%d\n", arrayLen);
+    // Pring new string
+    
+    printf("New String: %s\n", newString);
 
     
     return 0;
